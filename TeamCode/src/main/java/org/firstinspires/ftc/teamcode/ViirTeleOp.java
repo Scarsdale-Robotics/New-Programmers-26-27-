@@ -7,7 +7,7 @@ public class ViirTeleOp extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         //init
         HardwareRobot hardwareRobot = new HardwareRobot(hardwareMap);
-        DriveSubsystem drive = new DriveSubsystem(hardwareRobot);
+        DriveSubsystem drive = new DriveSubsystem(hardwareRobot.leftFront, hardwareRobot.rightFront, hardwareRobot.leftBack, hardwareRobot.rightBack);
         waitForStart();
         while (opModeIsActive()) {
             double turn = gamepad1.left_stick_x;

@@ -10,6 +10,8 @@ public final class DriveConstants {
      *  Max velocity driving forward in in/s.
      */
     public static double MAX_FORWARD_SPEED = 57.5d; //TODO: TUNE
+
+    public static double TPI = 45.2899;
     /**
      * Max velocity driving sideways in in/s.
      */

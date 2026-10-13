@@ -24,10 +24,10 @@ public class SamuelTeleOp extends LinearOpMode {
             double strafe = gamepad1.left_stick_x;
             double forward = -gamepad1.left_stick_y;
             double turn = gamepad1.right_stick_x;
-            driveSubsystem.driveRobotCentricReal(strafe, forward, turn);
             double x = hardwareRobot.pinpoint.getPosX(DistanceUnit.INCH);
             double y = hardwareRobot.pinpoint.getPosY(DistanceUnit.INCH);
             double yaw = hardwareRobot.pinpoint.getHeading(AngleUnit.DEGREES);
+            driveSubsystem.driveFieldCentricReal(strafe, forward, turn, yaw);
             telemetry.addLine("Turn: " + turn);
             telemetry.addLine("Strafe: " + strafe);
             telemetry.addLine("Forward: " + forward);

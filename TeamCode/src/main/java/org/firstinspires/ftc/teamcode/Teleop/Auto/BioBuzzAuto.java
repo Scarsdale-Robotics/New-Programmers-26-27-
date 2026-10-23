@@ -104,22 +104,22 @@ public class RedCloseZoneAutoJoint extends LinearOpMode {
     boolean pathF2 = true;
     boolean pathF3 = true;
     boolean pathF4 = true;
+    boolean pathF5 = true;
     public void autonomousPathUpdate() {
         switch (pathState) {
             case 0:
                 if (!follower.isBusy()) {
-                    if (follower.atPose(p.startPoseRC,3,3)) {
-                        robot.shooter.shoot();
+                    if (follower.atPose(InitialStartingPointNextToRedSeesaw,3,3)) {
                         setPathState(1);
                     }
                 }
                 break;
             case 1:
                 if (pathF1) {
-                    follower.followPath(intakeOne);
+                    follower.followPath(FirstShootToFirstIntake);
                     pathF1 = false;
                 }
-                if (follower.atPose(p.intakeSideRed,3,3)) {
+                if (follower.atPose(LeftSideFirstIntake,3,3)) {
                     setPathState(2);
                 }
                 break;
@@ -127,10 +127,10 @@ public class RedCloseZoneAutoJoint extends LinearOpMode {
                 if (!follower.isBusy()){
                     if (pathF2){
                         //robot.intake.set(1);
-                        follower.followPath(finishIntakeOne);
+                        follower.followPath(FirstIntakeToSecondShoot);
                         pathF2 = false;
                     }
-                    if (follower.atPose(p.finishIntakeSideRed, 3,3)) {
+                    if (follower.atPose(OppositeSideOfRedSeesaw, 3,3)) {
                         //robot.intake.set(0);
                         setPathState(3);
                     }
@@ -139,26 +139,41 @@ public class RedCloseZoneAutoJoint extends LinearOpMode {
             case 3:
                 if (!follower.isBusy()){
                     if (pathF3){
-                        follower.followPath(goToFarTransition, true);
+                        follower.followPath(SecondShootToSecondIntake, true);
                         pathF3 = false;
                     }
-                    if(follower.atPose(p.farTransitionRed, 3,3)) {
-                        robot.shooter.shoot();
-                        setPathState(5);
+                    if(follower.atPose(TopSideSecondIntake, 3,3)) {
+                        setPathState(4);
                     }
                 }
                 break;
-            case 5:
+            case 4:
                 if (!follower.isBusy()) {
                     if (pathF4) {
-                        follower.followPath(goToPark);
+                        follower.followPath(ReturnToSecondShoot,true);
                         pathF4 = false;
                     }
-                    if (follower.atPose(p.parkRed, 3,3)) {
+                    if (follower.atPose(OppositeSideOfRedSeesaw, 3,3)) {
+                        setPathState(5);
+                    }
+                }
+            case 5:
+                if (!follower.isBusy()) {
+                    if (pathF5) {
+                        follower.followPath(ReturnToSecondShoot,true);
+                        pathF5 = false;
+                    }
+                    if (follower.atPose(OppositeSideOfRedSeesaw, 3,3)) {
                         setPathState(6);
                     }
                 }
             case 6:
+                if (!follower.isBusy()) {
+                    if (pathF5) {
+                        follower.followPath(GoToPark);
+                    }
+                }
+            case 7:
                 break;
         }
     }

@@ -22,7 +22,7 @@ public class SamuelAuto extends LinearOpMode {
     public double lastT = 0;
 
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() throws Inter ruptedException {
         m = new Motor(hardwareMap, "motor", Motor.GoBILDA.RPM_312);
         waitForStart();
         while (opModeIsActive()) {
@@ -41,3 +41,4 @@ public class SamuelAuto extends LinearOpMode {
 
     }
 }
+

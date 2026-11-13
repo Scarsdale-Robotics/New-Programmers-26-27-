@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
 @Autonomous(name = "RCAutoJoint")
-public class RedCloseZoneAutoJoint extends LinearOpMode {
+public class BioBuzzAuto extends LinearOpMode {
     public Pose InitialStartingPointNextToRedSeesaw = new Pose(56,8,r(90));
     public Pose LeftSideFirstIntake = new Pose(12,47,r(180));
     public Pose ControlPointOneFromFirstIntakeToOppositeSideOfRedSeesaw = new Pose(43, 48);

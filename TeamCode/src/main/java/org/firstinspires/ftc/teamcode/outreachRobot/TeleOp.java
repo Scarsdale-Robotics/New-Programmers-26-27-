@@ -5,10 +5,12 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
+@com.qualcomm.robotcore.eventloop.opmode.TeleOp
 public class TeleOp extends LinearOpMode{
+    @Override
     public void runOpMode() throws InterruptedException {
         HardwareRobot2 hardwareRobot2 = new HardwareRobot2(hardwareMap);
-        DriveSubsystem2 driveSubsystem2 = new DriveSubsystem2(hardwareRobot2.leftBack,hardwareRobot2.leftFront, hardwareRobot2.rightBack,hardwareRobot2.rightFront );
+        DriveSubsystem2 driveSubsystem2 = new DriveSubsystem2(hardwareRobot2.leftBack,hardwareRobot2.leftFront, hardwareRobot2.rightBack,hardwareRobot2.rightFront, hardwareRobot2.pinpoint );
         waitForStart();
         while (opModeIsActive()){
             double strafe = gamepad1.left_stick_x;
@@ -17,7 +19,7 @@ public class TeleOp extends LinearOpMode{
             double x = hardwareRobot2.pinpoint.getPosX(DistanceUnit.INCH);
             double y = hardwareRobot2.pinpoint.getPosY(DistanceUnit.INCH);
             double yaw = hardwareRobot2.pinpoint.getHeading(AngleUnit.DEGREES);
-            driveSubsystem2.fieldCentricDrive(strafe, forward, turn);
+            driveSubsystem2.robotCentricDrive(strafe, forward, turn);
             telemetry.addLine("Turn: " + turn);
             telemetry.addLine("Strafe: " + strafe);
             telemetry.addLine("Forward: " + forward);

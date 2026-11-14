@@ -63,3 +63,7 @@ public class HardwareRobot2 {
 
 }
 
+//personal note:
+//stop and reset encoder means resetting internal rotations and bringing them back to 0
+//run without encoder means to accept values between -1 to 1
+//zero power behavior means stop when you release a joystick

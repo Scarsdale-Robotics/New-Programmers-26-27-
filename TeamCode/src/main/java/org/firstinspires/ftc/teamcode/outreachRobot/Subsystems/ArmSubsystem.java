@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.outreachRobot;
+package org.firstinspires.ftc.teamcode.outreachRobot.Subsystems;
 
 import com.arcrobotics.ftclib.hardware.motors.Motor;
 import com.bylazar.configurables.annotations.Configurable;

@@ -5,6 +5,8 @@ import com.qualcomm.hardware.gobilda.GoBildaPinpointDriver;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.robotcore.external.hardware.camera.CameraName;
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 public class HardwareRobot2 {
@@ -14,6 +16,7 @@ public class HardwareRobot2 {
     public final Motor rightFront;
     public final Motor arm;
     public final Motor arm2;
+    public final WebcamName webcam;
 
 
     public final GoBildaPinpointDriver pinpoint;
@@ -23,8 +26,9 @@ public class HardwareRobot2 {
         rightFront = new Motor(hardwareMap, "rfw", Motor.GoBILDA.RPM_312);
         leftBack = new Motor(hardwareMap, "lbw", Motor.GoBILDA.RPM_312);
         rightBack = new Motor(hardwareMap, "rbw", Motor.GoBILDA.RPM_312);
-        arm = new Motor(hardwareMap, "arm", Motor.GoBILDA.RPM_312);
-        arm2 = new Motor(hardwareMap, "arm2", Motor.GoBILDA.RPM_312);
+        arm = new Motor(hardwareMap, "arm", Motor.GoBILDA.RPM_1620);
+        arm2 = new Motor(hardwareMap, "arm2", Motor.GoBILDA.RPM_1620);
+
 
         leftFront.motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightFront.motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -68,7 +72,7 @@ public class HardwareRobot2 {
         rightBack.setZeroPowerBehavior(Motor.ZeroPowerBehavior.BRAKE);
         arm.setZeroPowerBehavior(Motor.ZeroPowerBehavior.BRAKE);
         arm2.setZeroPowerBehavior(Motor.ZeroPowerBehavior.BRAKE);
-        //webcam = hardwareMap.get(WebcamName.class,  "Webcam 1");
+        webcam = hardwareMap.get(WebcamName.class,  "Webcam 1");
 
         pinpoint = hardwareMap.get(GoBildaPinpointDriver.class, "pinpoint");
 

@@ -5,6 +5,8 @@ import com.arcrobotics.ftclib.drivebase.MecanumDrive;
 import com.arcrobotics.ftclib.hardware.motors.Motor;
 import com.qualcomm.hardware.gobilda.GoBildaPinpointDriver;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+
 public class DriveSubsystem2 extends SubsystemBase {
     private final Motor leftBack;
     private final Motor leftFront;
@@ -44,7 +46,7 @@ public class DriveSubsystem2 extends SubsystemBase {
     }
 
     public void fieldCentricDrive(double strafe, double forward, double turn, double gyroAngle){
-        controller.driveFieldCentric(strafe,forward, turn, gyroAngle);
+        controller.driveFieldCentric(strafe,forward, turn, pinpoint.getHeading(AngleUnit.DEGREES));
     }
     public void stopController(){
         controller.stop();

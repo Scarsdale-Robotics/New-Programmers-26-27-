@@ -4,6 +4,7 @@ import com.arcrobotics.ftclib.hardware.motors.Motor;
 import com.qualcomm.hardware.gobilda.GoBildaPinpointDriver;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.CameraName;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -16,6 +17,7 @@ public class HardwareRobot2 {
     public final Motor rightFront;
     public final Motor arm;
     public final Motor arm2;
+    public final Servo servo;
     public final WebcamName webcam;
 
 
@@ -75,6 +77,7 @@ public class HardwareRobot2 {
         webcam = hardwareMap.get(WebcamName.class,  "Webcam 1");
 
         pinpoint = hardwareMap.get(GoBildaPinpointDriver.class, "pinpoint");
+        servo = hardwareMap.get(Servo.class, "servo");
 
     }
     public void initPinpoint() {

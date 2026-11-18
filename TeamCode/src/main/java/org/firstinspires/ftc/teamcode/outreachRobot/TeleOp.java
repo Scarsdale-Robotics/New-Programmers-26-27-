@@ -1,13 +1,15 @@
 package org.firstinspires.ftc.teamcode.outreachRobot;
 
+import com.bylazar.ftcontrol.panels.configurables.annotations.Configurable;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.outreachRobot.Subsystems.DriveSubsystem2;
-
+@Configurable
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp
 public class TeleOp extends LinearOpMode{
+    public static double pos = 0;
     @Override
     public void runOpMode() throws InterruptedException {
         HardwareRobot2 hardwareRobot2 = new HardwareRobot2(hardwareMap);
@@ -21,6 +23,8 @@ public class TeleOp extends LinearOpMode{
             double y = hardwareRobot2.pinpoint.getPosY(DistanceUnit.INCH);
             double yaw = hardwareRobot2.pinpoint.getHeading(AngleUnit.DEGREES);
             driveSubsystem2.robotCentricDrive(strafe, forward, turn);
+            hardwareRobot2.servo.setPosition(pos);
+            telemetry.addData("Servo pos", hardwareRobot2.servo.getPosition());
             telemetry.addLine("Turn: " + turn);
             telemetry.addLine("Strafe: " + strafe);
             telemetry.addLine("Forward: " + forward);

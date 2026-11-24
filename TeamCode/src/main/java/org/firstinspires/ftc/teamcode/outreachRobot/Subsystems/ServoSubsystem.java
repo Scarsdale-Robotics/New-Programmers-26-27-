@@ -7,7 +7,7 @@ public class ServoSubsystem{
         this.servoA = servoA;
     }
     public int getHashCode(){
-        servoA.hashCode();
+        return servoA.hashCode();
     }
     public void close(){
         servoA.close();

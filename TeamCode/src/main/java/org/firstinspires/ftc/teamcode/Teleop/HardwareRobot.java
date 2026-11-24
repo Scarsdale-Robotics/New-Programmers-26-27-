@@ -17,43 +17,67 @@ public class HardwareRobot {
     public final Motor rightBack;
     public final Motor rightFront;
     public final GoBildaPinpointDriver pinpoint;
+    public final Motor arm1;
+    public final Motor arm2;
+    public final Servo Wrist;
+    public final Servo Claw;
 
     public HardwareRobot(HardwareMap hardwareMap) {
         leftFront = new Motor(hardwareMap, "lfw", Motor.GoBILDA.RPM_312);
         rightFront = new Motor(hardwareMap, "rfw", Motor.GoBILDA.RPM_312);
         leftBack = new Motor(hardwareMap, "lbw", Motor.GoBILDA.RPM_312);
         rightBack = new Motor(hardwareMap, "rbw", Motor.GoBILDA.RPM_312);
+        arm1 = new Motor(hardwareMap, "Arm 1", Motor.GoBILDA.RPM_312);
+        arm2 = new Motor(hardwareMap, "Arm 2", Motor.GoBILDA.RPM_312);
 
         leftFront.motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightFront.motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftBack.motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightBack.motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        arm1.motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        arm2.motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
 
         leftFront.motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightFront.motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftBack.motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightBack.motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        arm1.motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        arm2.motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
 
         leftFront.setRunMode(Motor.RunMode.RawPower);
         rightFront.setRunMode(Motor.RunMode.RawPower);
         leftBack.setRunMode(Motor.RunMode.RawPower);
         rightBack.setRunMode(Motor.RunMode.RawPower);
+        arm1.setRunMode(Motor.RunMode.RawPower);
+        arm2.setRunMode(Motor.RunMode.RawPower);
 
         leftFront.setInverted(true);
         rightFront.setInverted(true);
         leftBack.setInverted(true);
         rightBack.setInverted(true);
+        arm1.setInverted(true);
+        arm2.setInverted(true);
+
 
         leftFront.motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightFront.motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftBack.motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightBack.motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        arm1.motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        arm2.motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         leftFront.setZeroPowerBehavior(Motor.ZeroPowerBehavior.BRAKE);
         rightFront.setZeroPowerBehavior(Motor.ZeroPowerBehavior.BRAKE);
         leftBack.setZeroPowerBehavior(Motor.ZeroPowerBehavior.BRAKE);
         rightBack.setZeroPowerBehavior(Motor.ZeroPowerBehavior.BRAKE);
+        arm1.setZeroPowerBehavior(Motor.ZeroPowerBehavior.BRAKE);
+        arm2.setZeroPowerBehavior(Motor.ZeroPowerBehavior.BRAKE);
         //webcam = hardwareMap.get(WebcamName.class,  "Webcam 1");
+
+        Wrist = hardwareMap.get(Servo.class, "Wrist");
+        Claw = hardwareMap.get(Servo.class, "Claw");
 
         pinpoint = hardwareMap.get(GoBildaPinpointDriver.class, "pinpoint");
 
